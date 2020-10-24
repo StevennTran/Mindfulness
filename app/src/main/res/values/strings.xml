@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mindfulness</string>
+    <string name="LoginText">login</string>
+    <string name="PasswordText">password</string>
 </resources>
