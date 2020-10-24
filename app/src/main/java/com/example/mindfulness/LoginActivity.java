@@ -34,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
                 editor.putString("email",emailText.getText().toString());
                 editor.commit();
 
-                Intent intent = new Intent(LoginActivity.this, null);
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class); //change from null
                 startActivity(intent);
 
             }
@@ -63,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    protected void onDestory(){
+    protected void onDestroy(){
         super.onDestroy();
 
     }
