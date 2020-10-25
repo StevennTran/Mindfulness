@@ -2,11 +2,11 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:drawable="@drawable/layer_one"
-        android:duration="3000"/>
+        android:duration="5000"/>
     <item android:drawable="@drawable/layer_two"
-        android:duration="3000"/>
+        android:duration="5000"/>
     <item android:drawable="@drawable/layer_three"
-        android:duration="3000"/>
+        android:duration="5000"/>
 
 
 

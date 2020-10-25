@@ -13,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -25,12 +26,12 @@ public class LoginActivity extends AppCompatActivity {
         AnimationDrawable animation = (AnimationDrawable) background.getBackground();
 
         animation.setEnterFadeDuration(0);
-        animation.setExitFadeDuration(3000);
+        animation.setExitFadeDuration(5000);
 
         animation.start();
 
         final Button loginButton = findViewById(R.id.loginButton);
-
+        final TextView signUpButton = findViewById(R.id.signupbutton);
         final SharedPreferences sharedPref = getSharedPreferences("email", Context.MODE_PRIVATE);
         final EditText emailText = findViewById(R.id.emailText);
 
@@ -48,6 +49,13 @@ public class LoginActivity extends AppCompatActivity {
                 Intent intent = new Intent(LoginActivity.this, MainActivity.class); //change from null
                 startActivity(intent);
 
+            }
+        });
+        signUpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 
