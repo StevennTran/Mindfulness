@@ -1,15 +1,18 @@
 package com.example.mindfulness;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -17,6 +20,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        ConstraintLayout background = findViewById(R.id.background);
+        AnimationDrawable animation = (AnimationDrawable) background.getBackground();
+
+        animation.setEnterFadeDuration(0);
+        animation.setExitFadeDuration(3000);
+
+        animation.start();
 
         final Button loginButton = findViewById(R.id.loginButton);
 
