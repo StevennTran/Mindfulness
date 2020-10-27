@@ -3,4 +3,5 @@
     <string name="app_name">名前アプリ</string>
     <string name="LoginText">ログインする</string>
     <string name="PasswordText">パスワード</string>
+    <string name="RegisterText">Register</string>
 </resources>

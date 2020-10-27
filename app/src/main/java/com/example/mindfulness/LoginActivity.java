@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -34,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
         final TextView signUpButton = findViewById(R.id.signupbutton);
         final SharedPreferences sharedPref = getSharedPreferences("email", Context.MODE_PRIVATE);
         final EditText emailText = findViewById(R.id.emailText);
+        final EditText passwordText = findViewById(R.id.editText);
 
         emailText.setText(sharedPref.getString("email","email@domain.ca"));
         final SharedPreferences.Editor editor = sharedPref.edit();
@@ -43,12 +45,24 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                editor.putString("email",emailText.getText().toString());
-                editor.commit();
 
-                Intent intent = new Intent(LoginActivity.this, MainActivity.class); //change from null
-                startActivity(intent);
-
+                String emailString = emailText.getText().toString();
+                Log.i("",emailString);
+                String pass = passwordText.getText().toString();
+                String valid = "admin";
+                if(emailString.equals(valid)){
+                    editor.putString("email",emailText.getText().toString());
+                    editor.commit();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class); //change from null
+                    startActivity(intent);
+                    finish();
+                }
+                else{
+                    CharSequence text = "Invalid Login";
+                    int duration = Toast.LENGTH_SHORT;
+                    Toast toast = Toast.makeText(LoginActivity.this , text, duration);
+                    toast.show();
+                }
             }
         });
         signUpButton.setOnClickListener(new View.OnClickListener() {
