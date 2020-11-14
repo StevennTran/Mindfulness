@@ -11,7 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".MeditateActivity"></activity>
+        <activity android:name=".MoodActivity" />
+        <activity android:name=".WaterActivity" />
+        <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
