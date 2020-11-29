@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -19,6 +20,7 @@ public class WaterActivity extends AppCompatActivity {
     Button waterDecrease;
     TextView waterCounter;
     ImageView imgGlass;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,9 @@ public class WaterActivity extends AppCompatActivity {
         waterDecrease = findViewById(R.id.button_waterCountDown);
         waterCounter = findViewById(R.id.water_counter);
         imgGlass = findViewById(R.id.imageView_glass);
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setMax(80);
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     public void waterIncrement(View view)
@@ -37,6 +42,7 @@ public class WaterActivity extends AppCompatActivity {
         int count = Integer.parseInt(waterCounter.getText().toString());
         count++;
         waterCounter.setText(Integer.toString(count));
+        progressBar.incrementProgressBy(10);
         Animation shake = AnimationUtils.loadAnimation(this, R.anim.shake);
         imgGlass.startAnimation(shake);
     }
@@ -49,6 +55,7 @@ public class WaterActivity extends AppCompatActivity {
         {
             count--;
             waterCounter.setText(Integer.toString(count));
+            progressBar.setProgress(progressBar.getProgress()-10);
         }
         else
         {

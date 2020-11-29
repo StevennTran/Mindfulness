@@ -2,7 +2,9 @@ package com.example.mindfulness;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
@@ -30,7 +32,9 @@ public class MoodActivity extends AppCompatActivity {
         moodList.add("Overjoyed");
         moodList.add("Sad");
         moodList.add("Stressed");
-        moodList.add("Exhausted");
+        moodList.add("Overwhelmed");
+        moodList.add("Angry");
+        moodList.add("Tired");
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, moodList);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         moodSpinner.setAdapter(arrayAdapter);
@@ -57,8 +61,14 @@ public class MoodActivity extends AppCompatActivity {
                     case("Stressed"):
                         moodImage.setImageResource(R.drawable.stressed_face);
                         break;
-                    case("Exhausted"):
+                    case("Overwhelmed"):
                         moodImage.setImageResource(R.drawable.exhausted_face);
+                        break;
+                    case("Tired"):
+                        moodImage.setImageResource(R.drawable.sleepy_face);
+                        break;
+                    case("Angry"):
+                        moodImage.setImageResource(R.drawable.angry_face);
                         break;
                     default:
                         moodImage.setImageResource(R.drawable.default_face);
@@ -69,5 +79,12 @@ public class MoodActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView <?> parent) {
             }
         });
+    }
+
+    public void onClickMoodAdviceActivity(View view)
+    {
+        Log.i("onClick", "User clicked mood advice button");
+        Intent intent = new Intent(MoodActivity.this, MoodAdviceActivity.class);
+        startActivity(intent);
     }
 }
