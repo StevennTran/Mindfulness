@@ -38,8 +38,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickMeditate(View view)
     {
-        Log.i("onClick", "User clicked mood tracker button");
+        Log.i("onClick", "User clicked meditate button");
         Intent intent = new Intent(MainActivity.this, MeditateActivity.class);
+        startActivity(intent);
+    }
+
+    public void onClickSleep(View view)
+    {
+        Log.i("onClick", "User clicked sleep button");
+        Intent intent = new Intent(MainActivity.this, SleepActivity.class);
         startActivity(intent);
     }
 
