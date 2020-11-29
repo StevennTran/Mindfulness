@@ -2,7 +2,9 @@ package com.example.mindfulness;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +13,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class RegisterActivity extends AppCompatActivity {
+    DatabaseHelper dbHelper;
+    SQLiteDatabase db;
+    ContentValues values;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,13 +23,16 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         final EditText registerEmail = findViewById(R.id.emailSignUpText);
         final EditText registerPassword = findViewById(R.id.signUpPassword);
+
+        dbHelper = new DatabaseHelper(this);
+        db = dbHelper.getWritableDatabase();
+        values = new ContentValues();
+
         Button signUpButton = findViewById(R.id.signUpButton);
         signUpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean check = false;
                 if(registerEmail.getText().toString().contains("@")){
-                    check = true;
                     Log.i("Register","valid email");
                     if(registerPassword.getText().toString().length() == 0){
                         CharSequence text = "Please type in a password";
@@ -33,11 +41,14 @@ public class RegisterActivity extends AppCompatActivity {
                         toast.show();
                     }
                     else{
-                        Log.i("Register","Valid registerd account");
+                        Log.i("Register","Valid registered account");
+                        values.put(DatabaseHelper.USERNAME,registerEmail.getText().toString());
+                        values.put(DatabaseHelper.PASSWORD,registerPassword.getText().toString());
+                        db.insert(DatabaseHelper.TABLE_NAME,"NullPlaceHolder",values);
+                        Log.i("Register","values: " + values.toString());
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
-
                     }
                 }
                 else{

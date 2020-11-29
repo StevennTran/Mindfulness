@@ -1,8 +1,11 @@
 package com.example.mindfulness;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -74,23 +77,42 @@ public class loginCredentials extends Fragment {
         final SharedPreferences sharedPref = getActivity().getSharedPreferences("email", Context.MODE_PRIVATE);
         final EditText emailText = view.findViewById(R.id.emailText);
         final EditText passwordText = view.findViewById(R.id.editText);
-
         emailText.setText(sharedPref.getString("email","email@domain.ca"));
         final SharedPreferences.Editor editor = sharedPref.edit();
-
+        DatabaseHelper dbHelper = new DatabaseHelper(view.getContext()); //View is parent
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        String query = "SELECT * FROM Accounts";
+        final Cursor myCursor = db.rawQuery(query,null);
         emailText.setText(sharedPref.getString("email",""));
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 String emailString = emailText.getText().toString();
                 Log.i("",emailString);
                 String pass = passwordText.getText().toString();
                 String valid = "admin";
-                if(emailString.equals(valid)){
+                Boolean verification = false;
+                myCursor.moveToFirst();
+                while(!myCursor.isAfterLast() || !emailString.equals(valid)){
+                    if(myCursor.getString(myCursor.getColumnIndex(DatabaseHelper.USERNAME)).equals(emailString)){
+                        if(myCursor.getString(myCursor.getColumnIndex(DatabaseHelper.PASSWORD)).equals(pass)){
+                            verification = true;
+                            break;
+                        }
+                        else{
+                            break;
+                        }
+                    }
+                    else{
+                        myCursor.moveToNext();
+                    }
+                }
+                myCursor.close();
+                if(verification || emailString.equals(valid)){
                     editor.putString("email",emailText.getText().toString());
                     editor.commit();
+
                     Intent intent = new Intent(v.getContext(), MainActivity.class); //change from null
                     startActivity(intent);
                     getActivity().finish();

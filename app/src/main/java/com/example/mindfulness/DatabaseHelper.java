@@ -26,7 +26,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public DatabaseHelper(Context ctx) {
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
-
     }
 
     public void onCreate(SQLiteDatabase database) {
