@@ -14,12 +14,17 @@ import android.widget.LinearLayout;
 public class MainActivity extends AppCompatActivity {
 
     ImageButton waterButton;
+    String userID;
+    final String LOGINID = "LOGINID";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Log.i("onCreate", "MainActivity created");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         waterButton = findViewById(R.id.water_tracker);
+        Bundle bundle = getIntent().getExtras().getBundle(LOGINID);
+        userID = bundle.getString("userID");
+        Log.i("Main",userID);
     }
 
     public void onClickWater(View view)
