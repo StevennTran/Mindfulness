@@ -27,9 +27,7 @@ public class loginCredentials extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    final String LOGINID = "LOGINID";
 
 
     public loginCredentials() {
@@ -113,6 +111,9 @@ public class loginCredentials extends Fragment {
                     editor.commit();
 
                     Intent intent = new Intent(v.getContext(), MainActivity.class); //change from null
+                    Bundle temp = new Bundle();
+                    temp.putString("userID", emailText.getText().toString());
+                    intent.putExtra(LOGINID, temp);
                     startActivity(intent);
                     myCursor.close();
                     getActivity().finish();
