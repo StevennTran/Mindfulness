@@ -94,7 +94,7 @@ public class loginCredentials extends Fragment {
                 String valid = "admin";
                 Boolean verification = false;
                 myCursor.moveToFirst();
-                while(!myCursor.isAfterLast() || !emailString.equals(valid)){
+                while(!myCursor.isAfterLast()){
                     if(myCursor.getString(myCursor.getColumnIndex(DatabaseHelper.USERNAME)).equals(emailString)){
                         if(myCursor.getString(myCursor.getColumnIndex(DatabaseHelper.PASSWORD)).equals(pass)){
                             verification = true;
@@ -108,13 +108,13 @@ public class loginCredentials extends Fragment {
                         myCursor.moveToNext();
                     }
                 }
-                myCursor.close();
                 if(verification || emailString.equals(valid)){
                     editor.putString("email",emailText.getText().toString());
                     editor.commit();
 
                     Intent intent = new Intent(v.getContext(), MainActivity.class); //change from null
                     startActivity(intent);
+                    myCursor.close();
                     getActivity().finish();
                 }
                 else{
