@@ -29,6 +29,7 @@ public class MoodAdviceActivity extends AppCompatActivity {
         adviceList.add("Meditation");
         adviceList.add("Hydration");
         adviceList.add("Staying grounded");
+        adviceList.add("Walking");
         dialogText = "default message";
         category = "default category";
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item , adviceList);
@@ -41,17 +42,20 @@ public class MoodAdviceActivity extends AppCompatActivity {
                 switch(i)
                 {
                     case(0):
-                        dialogText = "Meditation tip";
-                        category = "Tips on meditating:";
+                        dialogText = "Use the meditation section of the app to help!";
+                        category = "Tips on meditating: ";
                         break;
                     case(1):
-                        dialogText = "Hydration tip";
+                        dialogText = "Hydration tip: You should at least have 15.5 cups of water! Track your intake in the app!";
                         category = "Hydration is important!";
                         break;
                     case(2):
                         dialogText = "Grounded tip";
                         category = "Practicing remaining grounded:";
                         break;
+                    case(3):
+                        dialogText = "Walking tips";
+                        category = "Go for a nice walk!";
                     default:
                         dialogText = "Error, default selected";
                         category = "Error, default category";
