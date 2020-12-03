@@ -18,7 +18,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.506"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/label_wakeTime"
@@ -30,56 +31,71 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sleepTime" />
+        app:layout_constraintTop_toBottomOf="@+id/sleepTime"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/wakeTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="100dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="time"
         android:onClick="showTimePickerDialogWake"
         android:text="Click to set time"
+        android:background="@drawable/roundcorner"
+        android:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toTopOf="@+id/label_hoursOfSleep"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_wakeTime" />
+        app:layout_constraintTop_toBottomOf="@+id/label_wakeTime"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/label_hoursOfSleep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="170dp"
         android:layout_marginTop="30dp"
-        android:layout_marginEnd="170dp"
         android:layout_marginBottom="470dp"
         android:text="Hours of sleep:"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/wakeTime" />
+        app:layout_constraintTop_toBottomOf="@+id/wakeTime"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/sleepTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
         android:layout_marginTop="10dp"
-        android:layout_marginEnd="100dp"
         android:layout_marginBottom="10dp"
         android:ems="10"
         android:inputType="time"
         android:onClick="showTimePickerDialogSleep"
         android:text="Click to set time"
+        android:background="@drawable/roundcorner"
+        android:fontFamily="sans-serif-smallcaps"
         app:layout_constraintBottom_toTopOf="@+id/label_wakeTime"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_sleepTime" />
+        app:layout_constraintTop_toBottomOf="@+id/label_sleepTime"
+        android:gravity="center"/>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="55dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_hoursOfSleep"
+        app:srcCompat="@drawable/sleepy_face" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

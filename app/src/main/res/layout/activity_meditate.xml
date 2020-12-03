@@ -36,7 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickPlay"
-            app:srcCompat="@android:drawable/ic_media_play" />
+            app:srcCompat="@android:drawable/ic_media_play"
+            android:background="@drawable/roundcorner"/>
 
         <ImageButton
             android:id="@+id/imageButton2"
@@ -44,6 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:onClick="onClickPause"
-            app:srcCompat="@android:drawable/ic_media_pause" />
+            app:srcCompat="@android:drawable/ic_media_pause"
+            android:background="@drawable/roundcorner"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

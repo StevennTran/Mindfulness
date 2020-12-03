@@ -79,7 +79,7 @@ public class JournalActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
                 //Intent in=new Intent(CuacaNowActivity.this,DetailActivity.class);
                // startActivity(in)
-                Log.i("clicked","works");
+                Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
             }
         });
 
