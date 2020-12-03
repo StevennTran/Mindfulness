@@ -89,4 +89,24 @@
         android:layout_column="1"
         android:text="Build and maintain a healthy sleep schedule" />
 
+    <ImageButton
+        android:id="@+id/journal"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_row="4"
+        android:layout_column="0"
+        android:adjustViewBounds="true"
+        android:backgroundTint="#2196F3"
+        android:onClick="onClickJournal"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/journal" />
+
+    <TextView
+        android:id="@+id/label_journal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_row="4"
+        android:layout_column="1"
+        android:text="Write and read through your own journal" />
+
 </android.widget.GridLayout>

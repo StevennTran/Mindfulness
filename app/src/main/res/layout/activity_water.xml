@@ -29,6 +29,7 @@
         android:layout_marginTop="350dp"
         android:layout_marginEnd="65dp"
         android:layout_marginBottom="350dp"
+        android:backgroundTint="#03A9F4"
         android:onClick="waterIncrement"
         android:text="+"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,6 +45,7 @@
         android:layout_marginTop="350dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="350dp"
+        android:backgroundTint="#03A9F4"
         android:onClick="waterDecrement"
         android:text="-"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -68,8 +70,7 @@
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleHorizontal"
-        android:theme="@style/ThemeOverlay.AppCompat.Light"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="30dp"
@@ -78,12 +79,10 @@
         android:background="#000000"
         android:backgroundTint="#F60202"
         android:max="80"
-        android:progress="0"
         android:progressTint="@color/colorPrimary"
-        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/water_counter"/>
+        app:layout_constraintTop_toBottomOf="@+id/water_counter" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

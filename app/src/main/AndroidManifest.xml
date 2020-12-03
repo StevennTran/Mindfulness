@@ -16,6 +16,7 @@
         <activity android:name=".MeditateActivity" />
         <activity android:name=".MoodActivity" />
         <activity android:name=".WaterActivity" />
+        <activity android:name=".JournalActivity" />
         <activity android:name=".RegisterActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
             </activity>

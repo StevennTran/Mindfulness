@@ -55,6 +55,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickJournal(View view)
+    {
+        Log.i("onClick", "User clicked journal button");
+        Intent intent = new Intent(MainActivity.this, JournalActivity.class);
+        startActivity(intent);
+    }
+
     protected void onResume(){
         super.onResume();
 
