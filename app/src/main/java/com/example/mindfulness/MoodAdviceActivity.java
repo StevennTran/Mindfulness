@@ -61,7 +61,6 @@ public class MoodAdviceActivity extends AppCompatActivity {
                         category = "Error, default category";
                         break;
                 }
-
                 AlertDialog.Builder builder = new AlertDialog.Builder(MoodAdviceActivity.this);
 // 2. Chain together various setter methods to set the dialog characteristics
                 builder.setMessage(dialogText) //Add a dialog message to strings.xml

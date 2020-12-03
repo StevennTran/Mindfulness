@@ -22,6 +22,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //private static final String DATABASE_CREATE = "create table " + TABLE_NAME + "(" + USER_ID + " integer primary key autoincrement, " + USERNAME + " text not null);";
 
     public static final String DATABASE_CREATE = "create table " + TABLE_NAME + "(" + USER_ID + " integer primary key autoincrement, " + USERNAME + " text not null, " + PASSWORD + " text not null);";
+    public static final String DATABASE_CREATE_JOURNAL = "create table" + " JOURNAL " + "(" + USER_ID + " integer primary key, " + " Date " + " text not null, " + " textOne "+ " text not null, " + " textTwo " + " text not null," + " textThree" + " text not null);";
 
 
     public DatabaseHelper(Context ctx) {
@@ -31,6 +32,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase database) {
         Log.i(ACTIVITY_NAME, "Calling onCreate");
         database.execSQL(DATABASE_CREATE);
+        database.execSQL(DATABASE_CREATE_JOURNAL);
     }
 
 
