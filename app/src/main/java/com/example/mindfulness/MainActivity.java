@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
     {
         Log.i("onClick", "User clicked journal button");
         Intent intent = new Intent(MainActivity.this, JournalActivity.class);
+        Bundle temp = new Bundle();
+        temp.putString("userID", userID);
+        intent.putExtra(LOGINID, temp);
         startActivity(intent);
     }
 

@@ -35,6 +35,8 @@ public class JournalActivity extends AppCompatActivity {
 
     public ArrayList<String> myEntries = new ArrayList<String>();;
     public ListView myListView;
+    String userID;
+    final String LOGINID = "LOGINID";
 
     private class journalAdapter extends ArrayAdapter<String> {
 
@@ -51,7 +53,7 @@ public class JournalActivity extends AppCompatActivity {
 
         public View getView(int position, View convertView, ViewGroup parent){
             LayoutInflater inflater = JournalActivity.this.getLayoutInflater();
-            View result = null ;
+            View result = null;
             result = inflater.inflate(R.layout.journal_entries, null);
             TextView entry = (TextView)result.findViewById(R.id.journal_text);
             entry.setText(   getItem(position)  ); // get the string at position
@@ -69,10 +71,16 @@ public class JournalActivity extends AppCompatActivity {
         FragmentManager fragmentMan = getSupportFragmentManager();
         FragmentTransaction fragTrans = fragmentMan.beginTransaction();
         final journalAdapter myAdapter = new journalAdapter(this);
-        journal_entry fragment = new journal_entry();
+        Bundle bundle = getIntent().getExtras().getBundle(LOGINID);
+        userID = bundle.getString("userID");
+        Log.i("JournalActivity",userID);
+
+        journal_entry fragment = new journal_entry(userID);
 
         myListView = findViewById(R.id.listView);
         myListView.setAdapter (myAdapter);
+
+
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -84,7 +92,7 @@ public class JournalActivity extends AppCompatActivity {
         DatabaseHelper dbHelper = new DatabaseHelper(this); //View is parent
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         //ContentValues values = new ContentValues();
-        String query = "SELECT * FROM Jorunal";
+        String query = "SELECT * FROM Journal";
         Cursor myCursor = db.rawQuery(query,null);
 
         myCursor.moveToFirst();
