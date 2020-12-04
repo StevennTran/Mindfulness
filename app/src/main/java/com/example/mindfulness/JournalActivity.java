@@ -74,28 +74,27 @@ public class JournalActivity extends AppCompatActivity {
         myListView = findViewById(R.id.listView);
         myListView.setAdapter (myAdapter);
 
-        myListView.setOnItemClickListener(new android.widget.AdapterView.OnItemClickListener() {
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                //Intent in=new Intent(CuacaNowActivity.this,DetailActivity.class);
-               // startActivity(in)
+                Intent intent = new Intent(JournalActivity.this, MainActivity.class);
                 Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
             }
         });
+        DatabaseHelper dbHelper = new DatabaseHelper(this); //View is parent
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        //ContentValues values = new ContentValues();
+        String query = "SELECT * FROM Jorunal";
+        Cursor myCursor = db.rawQuery(query,null);
 
-
-
-        myEntries.add("TEST1");
-        myEntries.add("TEST2");
-        myEntries.add("TEST3");
-        myEntries.add("TEST4");
-
+        myCursor.moveToFirst();
+        while(!myCursor.isAfterLast()){
+            String date = myCursor.getString(myCursor.getColumnIndex("Date"));
+            myEntries.add(date);
+        }
+        myCursor.close();
 
         fragTrans.replace(R.id.journalFrame, fragment);
         fragTrans.commit();
-
-
     }
-
-
 }

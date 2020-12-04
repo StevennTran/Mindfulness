@@ -15,6 +15,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static String TABLE_NAME = "Accounts";
     public static String USERNAME = "UserName";
     public static String  PASSWORD = "Password";
+    public static String JOURNAL_TABLE_NAME = "Journal";
+    public static String DATE = "Date";
+    public static String TEXTONE = "TextOne";
+    public static String TEXTTWO = "TextTwo";
+    public static String TEXTTHREE = "TextThree";
 
     final private String ACTIVITY_NAME = "DatabaseHelper";
 
@@ -22,7 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     //private static final String DATABASE_CREATE = "create table " + TABLE_NAME + "(" + USER_ID + " integer primary key autoincrement, " + USERNAME + " text not null);";
 
     public static final String DATABASE_CREATE = "create table " + TABLE_NAME + "(" + USER_ID + " integer primary key autoincrement, " + USERNAME + " text not null, " + PASSWORD + " text not null);";
-    public static final String DATABASE_CREATE_JOURNAL = "create table" + " JOURNAL " + "(" + USER_ID + " integer primary key, " + " Date " + " text not null, " + " textOne "+ " text not null, " + " textTwo " + " text not null," + " textThree" + " text not null);";
+    public static final String DATABASE_CREATE_JOURNAL = "create table " + JOURNAL_TABLE_NAME + "(" + USER_ID + " integer primary key, " + DATE + " text not null, " + TEXTONE + " text not null, " + TEXTTWO + " text not null," + TEXTTHREE + " text not null);";
 
 
     public DatabaseHelper(Context ctx) {
