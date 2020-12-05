@@ -68,7 +68,6 @@ public class JournalActivity extends AppCompatActivity {
         }
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -122,7 +121,32 @@ public class JournalActivity extends AppCompatActivity {
             myEntries.add(message3);
         }
         myCursor.close();
+        db.close();
+    }
+
+    protected void onResume(){
+        super.onResume();
 
     }
 
+    protected void onStart(){
+        super.onStart();
+
+    }
+
+
+    protected void onPause() {
+        super.onPause();
+
+    }
+
+    protected void onStop(){
+        super.onStop();
+
+    }
+
+    protected void onDestroy(){
+        super.onDestroy();
+
+    }
 }

@@ -27,6 +27,34 @@ public class MeditateActivity extends AppCompatActivity {
     // Pausing the music
     public void onClickPause(View v)
     {
-        meditateMusic.pause();
+        meditateMusic.stop();
+    }
+
+    protected void onResume(){
+        super.onResume();
+
+    }
+
+    protected void onStart(){
+        super.onStart();
+
+    }
+
+
+    protected void onPause() {
+        super.onPause();
+        meditateMusic.release();
+
+    }
+
+    protected void onStop(){
+        super.onStop();
+        meditateMusic.release();
+    }
+
+    protected void onDestroy(){
+        super.onDestroy();
+        meditateMusic.release();
+
     }
 }

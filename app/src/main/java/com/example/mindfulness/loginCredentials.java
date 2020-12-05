@@ -120,6 +120,7 @@ public class loginCredentials extends Fragment {
                     intent.putExtra(LOGINID, temp);
                     startActivity(intent);
                     myCursor.close();
+                    db.close();
                     getActivity().finish();
                 }
                 else{

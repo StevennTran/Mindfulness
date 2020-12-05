@@ -83,6 +83,8 @@ public class journal_entry extends Fragment {
         return inflater.inflate(R.layout.fragment_journal_entry, container, false);
     }
 
+
+
     @Override
     public void onViewCreated(View view, Bundle SavedInstance)
     {
