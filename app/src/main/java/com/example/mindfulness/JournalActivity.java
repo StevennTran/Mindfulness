@@ -36,7 +36,8 @@ import java.util.Date;
 
 public class JournalActivity extends AppCompatActivity {
 
-    public ArrayList<String> myEntries = new ArrayList<String>();;
+    public ArrayList<String> myEntries = new ArrayList<String>();
+    public ArrayList<String> data = new ArrayList<String>();
     public ListView myListView;
     int userID;
     final String LOGINID = "LOGINID";
@@ -48,7 +49,7 @@ public class JournalActivity extends AppCompatActivity {
             super(ctx, 0);
         }
         public int getCount(){
-            return myEntries.size();
+            return myEntries.size() / 4;
         }
 
         public String getItem(int position){
@@ -88,21 +89,18 @@ public class JournalActivity extends AppCompatActivity {
         fragTrans.commit();
 
         submitButton = findViewById(R.id.button_writeJournal);
-        View.OnClickListener onClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
-                myEntries.add(date);
-                myAdapter.notifyDataSetChanged();
-            }
-        };
-
-
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
-                Intent intent = new Intent(JournalActivity.this, MainActivity.class);
+                Intent intent = new Intent(JournalActivity.this, EditMessage.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("date",myEntries.get(position));
+                bundle.putString("message1",myEntries.get(position + 1));
+                bundle.putString("message2",myEntries.get(position + 2));
+                bundle.putString("message3",myEntries.get(position + 3));
+                intent.putExtra("myMessage", bundle);
+                startActivity(intent);
                 Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
             }
         });
@@ -115,7 +113,13 @@ public class JournalActivity extends AppCompatActivity {
         myCursor.moveToFirst();
         while(!myCursor.isAfterLast()){
             String date = myCursor.getString(myCursor.getColumnIndex("Date"));
+            String message1 = myCursor.getString(myCursor.getColumnIndex("TextOne"));
+            String message2 = myCursor.getString(myCursor.getColumnIndex("TextTwo"));
+            String message3 = myCursor.getString(myCursor.getColumnIndex("TextThree"));
             myEntries.add(date);
+            myEntries.add(message1);
+            myEntries.add(message2);
+            myEntries.add(message3);
         }
         myCursor.close();
 

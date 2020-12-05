@@ -114,6 +114,9 @@ public class journal_entry extends Fragment {
                 textA3.setText("");
 
                 myEntries.add(date);
+                myEntries.add(editTextA1);
+                myEntries.add(editTextA2);
+                myEntries.add(editTextA3);
                 myAdapter.notifyDataSetChanged();
             }
         });

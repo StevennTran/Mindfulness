@@ -11,15 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".SleepActivity"></activity>
+        <activity android:name=".EditMessage"></activity>
+        <activity android:name=".SleepActivity" />
         <activity android:name=".MoodAdviceActivity" />
         <activity android:name=".MeditateActivity" />
         <activity android:name=".MoodActivity" />
         <activity android:name=".WaterActivity" />
         <activity android:name=".JournalActivity" />
-        <activity android:name=".RegisterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
-            </activity>
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
