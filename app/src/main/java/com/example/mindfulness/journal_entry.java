@@ -18,7 +18,9 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -92,6 +94,8 @@ public class journal_entry extends Fragment {
                 String editTextA3 = textA3.getText().toString();
                 ContentValues values = new ContentValues();
                 values.put("UserID",userID);
+                String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+                values.put("Date",date);
                 values.put("TextOne",editTextA1);
                 values.put("TextTwo",editTextA2);
                 values.put("TextThree",editTextA3);
@@ -101,7 +105,5 @@ public class journal_entry extends Fragment {
                 textA3.setText("");
             }
         });
-
-
     }
 }
