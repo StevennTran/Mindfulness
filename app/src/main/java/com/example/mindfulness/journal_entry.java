@@ -79,7 +79,7 @@ public class journal_entry extends Fragment {
     {
         textA1 = view.findViewById(R.id.editTextA1);
         textA2 = view.findViewById(R.id.editTextA2);
-        textA3 = view.findViewById(R.id.editText);
+        textA3 = view.findViewById(R.id.editTextA3);
         submitButton = view.findViewById(R.id.button_writeJournal);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
