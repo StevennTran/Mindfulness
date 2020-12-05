@@ -34,13 +34,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(ctx, DATABASE_NAME, null, VERSION_NUM);
     }
 
+    @Override
     public void onCreate(SQLiteDatabase database) {
         Log.i(ACTIVITY_NAME, "Calling onCreate");
         database.execSQL(DATABASE_CREATE);
         database.execSQL(DATABASE_CREATE_JOURNAL);
     }
 
-
+    @Override
     public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion) {
         Log.i(ACTIVITY_NAME, "Calling onUpgrade, oldVersion=" + oldVersion + "newVersion=" + newVersion);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);

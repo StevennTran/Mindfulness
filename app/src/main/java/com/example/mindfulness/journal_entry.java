@@ -85,6 +85,20 @@ public class journal_entry extends Fragment {
             @Override
             public void onClick(View v) {
                 Log.i("submitButton", "Submit Button Clicked");
+                DatabaseHelper dbHelper = new DatabaseHelper(v.getContext()); //View is parent
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+                String editTextA1 = textA1.getText().toString();
+                String editTextA2 = textA2.getText().toString();
+                String editTextA3 = textA3.getText().toString();
+                ContentValues values = new ContentValues();
+                values.put("Journal",userID);
+                values.put("Journal",editTextA1);
+                values.put("Journal",editTextA2);
+                values.put("Journal",editTextA3);
+                db.insert("Journal","NullPlaceHolder",values);
+                textA1.setText("");
+                textA2.setText("");
+                textA3.setText("");
             }
         });
 
