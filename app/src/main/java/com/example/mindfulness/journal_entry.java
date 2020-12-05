@@ -36,24 +36,24 @@ public class journal_entry extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String userID;
+    int userID;
 
     public Button submitButton;
     public EditText textA1;
     public EditText textA2;
     public EditText textA3;
 
-    public journal_entry(String userID) {
+    public journal_entry(int userID) {
         this.userID = userID;
-        Log.i("JOURNAL ENTRY", userID);
+        Log.i("JOURNAL ENTRY", Integer.toString(userID));
     }
 
     // TODO: Rename and change types and number of parameters
-    public static journal_entry newInstance(String userID) {
+    public static journal_entry newInstance(int userID) {
         journal_entry fragment = new journal_entry(userID);
 
         Bundle args = new Bundle();
-        args.putString("UserID", userID);
+        args.putInt("UserID", userID);
         fragment.setArguments(args);
         return fragment;
     }
@@ -91,10 +91,10 @@ public class journal_entry extends Fragment {
                 String editTextA2 = textA2.getText().toString();
                 String editTextA3 = textA3.getText().toString();
                 ContentValues values = new ContentValues();
-                values.put("Journal",userID);
-                values.put("Journal",editTextA1);
-                values.put("Journal",editTextA2);
-                values.put("Journal",editTextA3);
+                values.put("UserID",userID);
+                values.put("TextOne",editTextA1);
+                values.put("TextTwo",editTextA2);
+                values.put("TextThree",editTextA3);
                 db.insert("Journal","NullPlaceHolder",values);
                 textA1.setText("");
                 textA2.setText("");

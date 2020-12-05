@@ -39,7 +39,7 @@ public class JournalActivity extends AppCompatActivity {
     public EditText textA1;
     public EditText textA2;
     public EditText textA3;
-    String userID;
+    int userID;
     final String LOGINID = "LOGINID";
 
     private class journalAdapter extends ArrayAdapter<String> {
@@ -76,8 +76,8 @@ public class JournalActivity extends AppCompatActivity {
         FragmentTransaction fragTrans = fragmentMan.beginTransaction();
         final journalAdapter myAdapter = new journalAdapter(this);
         Bundle bundle = getIntent().getExtras().getBundle(LOGINID);
-        userID = bundle.getString("userID");
-        Log.i("JournalActivity",userID);
+        userID = bundle.getInt("userID");
+        Log.i("JournalActivity",Integer.toString(userID));
 
         journal_entry fragment = new journal_entry(userID);
 

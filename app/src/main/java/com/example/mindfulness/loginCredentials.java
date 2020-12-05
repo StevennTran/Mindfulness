@@ -28,7 +28,7 @@ public class loginCredentials extends Fragment {
     private static final String ARG_PARAM2 = "param2";
 
     final String LOGINID = "LOGINID";
-
+    SQLiteDatabase db;
 
     public loginCredentials() {
         // Required empty public constructor
@@ -78,7 +78,7 @@ public class loginCredentials extends Fragment {
         emailText.setText(sharedPref.getString("email","email@domain.ca"));
         final SharedPreferences.Editor editor = sharedPref.edit();
         DatabaseHelper dbHelper = new DatabaseHelper(view.getContext()); //View is parent
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
         String query = "SELECT * FROM Accounts";
         final Cursor myCursor = db.rawQuery(query,null);
@@ -107,12 +107,17 @@ public class loginCredentials extends Fragment {
                     }
                 }
                 if(verification || emailString.equals(valid)){
+                    String query = "SELECT UserID FROM Accounts WHERE UserName = " + emailText.getText().toString();
+                    final Cursor loginCursor = db.rawQuery(query,null);
+                    loginCursor.moveToFirst();
+                    int userID = loginCursor.getInt(loginCursor.getColumnIndex("userID"));
+                    loginCursor.close();
                     editor.putString("email",emailText.getText().toString());
                     editor.commit();
 
                     Intent intent = new Intent(v.getContext(), MainActivity.class); //change from null
                     Bundle temp = new Bundle();
-                    temp.putString("userID", emailText.getText().toString());
+                    temp.putInt("userID", userID);
                     intent.putExtra(LOGINID, temp);
                     startActivity(intent);
                     myCursor.close();
