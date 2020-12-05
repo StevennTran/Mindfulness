@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -36,6 +38,11 @@ public class journal_entry extends Fragment {
     private String mParam2;
     String userID;
 
+    public Button submitButton;
+    public EditText textA1;
+    public EditText textA2;
+    public EditText textA3;
+
     public journal_entry(String userID) {
         this.userID = userID;
         Log.i("JOURNAL ENTRY", userID);
@@ -44,6 +51,7 @@ public class journal_entry extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static journal_entry newInstance(String userID) {
         journal_entry fragment = new journal_entry(userID);
+
         Bundle args = new Bundle();
         args.putString("UserID", userID);
         fragment.setArguments(args);
@@ -69,7 +77,16 @@ public class journal_entry extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle SavedInstance)
     {
-
+        textA1 = view.findViewById(R.id.editTextA1);
+        textA2 = view.findViewById(R.id.editTextA2);
+        textA3 = view.findViewById(R.id.editText);
+        submitButton = view.findViewById(R.id.button_writeJournal);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("submitButton", "Submit Button Clicked");
+            }
+        });
 
 
     }

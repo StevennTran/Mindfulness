@@ -35,6 +35,10 @@ public class JournalActivity extends AppCompatActivity {
 
     public ArrayList<String> myEntries = new ArrayList<String>();;
     public ListView myListView;
+    public Button submitButton;
+    public EditText textA1;
+    public EditText textA2;
+    public EditText textA3;
     String userID;
     final String LOGINID = "LOGINID";
 
@@ -77,10 +81,11 @@ public class JournalActivity extends AppCompatActivity {
 
         journal_entry fragment = new journal_entry(userID);
 
+        fragTrans.replace(R.id.journalFrame, fragment);
+        fragTrans.commit();
+
         myListView = findViewById(R.id.listView);
         myListView.setAdapter (myAdapter);
-
-
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -102,7 +107,5 @@ public class JournalActivity extends AppCompatActivity {
         }
         myCursor.close();
 
-        fragTrans.replace(R.id.journalFrame, fragment);
-        fragTrans.commit();
     }
 }
