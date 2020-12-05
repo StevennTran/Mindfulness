@@ -44,19 +44,26 @@ public class journal_entry extends Fragment {
     public EditText textA1;
     public EditText textA2;
     public EditText textA3;
+    public ListView myListView;
+    public JournalActivity.journalAdapter myAdapter;
+    public ArrayList<String> myEntries;
 
-    public journal_entry(int userID) {
+    public journal_entry(int userID, ListView temp, JournalActivity.journalAdapter adapt, ArrayList<String> entries) {
         this.userID = userID;
+        myListView = temp;
+        myAdapter = adapt;
+        myEntries = entries;
         Log.i("JOURNAL ENTRY", Integer.toString(userID));
     }
 
     // TODO: Rename and change types and number of parameters
-    public static journal_entry newInstance(int userID) {
-        journal_entry fragment = new journal_entry(userID);
+    public static journal_entry newInstance(int userID, ListView temp, JournalActivity.journalAdapter adapt, ArrayList<String> entries) {
+        journal_entry fragment = new journal_entry(userID, temp, adapt, entries);
 
         Bundle args = new Bundle();
         args.putInt("UserID", userID);
         fragment.setArguments(args);
+
         return fragment;
     }
 
@@ -83,6 +90,7 @@ public class journal_entry extends Fragment {
         textA2 = view.findViewById(R.id.editTextA2);
         textA3 = view.findViewById(R.id.editTextA3);
         submitButton = view.findViewById(R.id.button_writeJournal);
+        myListView = view.findViewById(R.id.listView);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -99,10 +107,14 @@ public class journal_entry extends Fragment {
                 values.put("TextOne",editTextA1);
                 values.put("TextTwo",editTextA2);
                 values.put("TextThree",editTextA3);
+
                 db.insert("Journal","NullPlaceHolder",values);
                 textA1.setText("");
                 textA2.setText("");
                 textA3.setText("");
+
+                myEntries.add(date);
+                myAdapter.notifyDataSetChanged();
             }
         });
     }

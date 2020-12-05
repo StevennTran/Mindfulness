@@ -1,5 +1,6 @@
 package com.example.mindfulness;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
@@ -29,20 +30,19 @@ import android.widget.Toast;
 
 import android.os.Bundle;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class JournalActivity extends AppCompatActivity {
 
     public ArrayList<String> myEntries = new ArrayList<String>();;
     public ListView myListView;
-    public Button submitButton;
-    public EditText textA1;
-    public EditText textA2;
-    public EditText textA3;
     int userID;
     final String LOGINID = "LOGINID";
+    public Button submitButton;
 
-    private class journalAdapter extends ArrayAdapter<String> {
+    public class journalAdapter extends ArrayAdapter<String> {
 
         public journalAdapter(Context ctx) {
             super(ctx, 0);
@@ -72,6 +72,7 @@ public class JournalActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_journal);
+
         FragmentManager fragmentMan = getSupportFragmentManager();
         FragmentTransaction fragTrans = fragmentMan.beginTransaction();
         final journalAdapter myAdapter = new journalAdapter(this);
@@ -79,13 +80,24 @@ public class JournalActivity extends AppCompatActivity {
         userID = bundle.getInt("userID");
         Log.i("JournalActivity",Integer.toString(userID));
 
-        journal_entry fragment = new journal_entry(userID);
+        myListView = findViewById(R.id.listView);
+        myListView.setAdapter (myAdapter);
 
+        journal_entry fragment = new journal_entry(userID, myListView, myAdapter, myEntries);
         fragTrans.replace(R.id.journalFrame, fragment);
         fragTrans.commit();
 
-        myListView = findViewById(R.id.listView);
-        myListView.setAdapter (myAdapter);
+        submitButton = findViewById(R.id.button_writeJournal);
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String date = new SimpleDateFormat("dd-MM-yyyy").format(new Date());
+                myEntries.add(date);
+                myAdapter.notifyDataSetChanged();
+            }
+        };
+
+
 
         myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -108,4 +120,5 @@ public class JournalActivity extends AppCompatActivity {
         myCursor.close();
 
     }
+
 }

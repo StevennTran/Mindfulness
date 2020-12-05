@@ -10,7 +10,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 
     public static final String DATABASE_NAME = "MindfulDatabase";
-    public static final int VERSION_NUM = 6;
+    public static final int VERSION_NUM = 8;
     public static String USER_ID = "UserID";
     public static String TABLE_NAME = "Accounts";
     public static String USERNAME = "UserName";
