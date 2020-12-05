@@ -107,11 +107,10 @@ public class loginCredentials extends Fragment {
                     }
                 }
                 if(verification || emailString.equals(valid)){
-                    String query = "SELECT UserID FROM Accounts WHERE UserName = " + emailText.getText().toString();
-                    final Cursor loginCursor = db.rawQuery(query,null);
-                    loginCursor.moveToFirst();
-                    int userID = loginCursor.getInt(loginCursor.getColumnIndex("userID"));
-                    loginCursor.close();
+//                    String query = "SELECT UserID FROM Accounts WHERE Password = " + passwordText.getText().toString();
+//                    final Cursor loginCursor = db.rawQuery(query,null);
+//                    loginCursor.moveToFirst();
+                    int userID = myCursor.getInt(myCursor.getColumnIndex("UserID"));
                     editor.putString("email",emailText.getText().toString());
                     editor.commit();
 
