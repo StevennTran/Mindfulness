@@ -64,7 +64,6 @@ public class JournalActivity extends AppCompatActivity {
             entry.setText(   getItem(position)  ); // get the string at position
 
             return result;
-
         }
     }
 

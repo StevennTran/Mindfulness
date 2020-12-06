@@ -16,8 +16,10 @@ import java.util.ArrayList;
 
 public class MoodActivity extends AppCompatActivity {
 
-    Spinner moodSpinner;
+    public Spinner moodSpinner;
     ImageView moodImage;
+    int positionOfSelectedDataFromSpinner;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class MoodActivity extends AppCompatActivity {
         moodImage = findViewById(R.id.imageView_mood);
         moodImage.setImageResource(R.drawable.default_face);
         moodSpinner.setVisibility(View.VISIBLE);
+        positionOfSelectedDataFromSpinner = 0;
         ArrayList<String> moodList = new ArrayList<>();
         moodList.add("Calm");
         moodList.add("Happy");
@@ -48,30 +51,39 @@ public class MoodActivity extends AppCompatActivity {
                 {
                     case("Calm"):
                         moodImage.setImageResource(R.drawable.peaceful_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                     case("Happy"):
                         moodImage.setImageResource(R.drawable.happy_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                     case("Overjoyed"):
                         moodImage.setImageResource(R.drawable.overjoyed_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                     case("Sad"):
                         moodImage.setImageResource(R.drawable.sad_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                     case("Stressed"):
                         moodImage.setImageResource(R.drawable.stressed_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                     case("Overwhelmed"):
                         moodImage.setImageResource(R.drawable.exhausted_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                     case("Tired"):
                         moodImage.setImageResource(R.drawable.sleepy_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                     case("Angry"):
                         moodImage.setImageResource(R.drawable.angry_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                     default:
                         moodImage.setImageResource(R.drawable.default_face);
+                        positionOfSelectedDataFromSpinner= position;
                         break;
                 }
             }
@@ -85,6 +97,7 @@ public class MoodActivity extends AppCompatActivity {
     {
         Log.i("onClick", "User clicked mood advice button");
         Intent intent = new Intent(MoodActivity.this, MoodAdviceActivity.class);
+        intent.putExtra("position", positionOfSelectedDataFromSpinner);
         startActivity(intent);
     }
 }
