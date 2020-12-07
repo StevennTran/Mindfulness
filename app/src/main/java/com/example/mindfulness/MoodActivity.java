@@ -19,6 +19,7 @@ public class MoodActivity extends AppCompatActivity {
     public Spinner moodSpinner;
     ImageView moodImage;
     int positionOfSelectedDataFromSpinner;
+    String selectedMood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class MoodActivity extends AppCompatActivity {
         moodSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedMood = parent.getItemAtPosition(position).toString();
+                selectedMood = parent.getItemAtPosition(position).toString();
                 Toast.makeText(parent.getContext(), "You said you're feeling:  " + selectedMood, Toast.LENGTH_LONG).show();
 
                 switch(selectedMood)
@@ -97,7 +98,9 @@ public class MoodActivity extends AppCompatActivity {
     {
         Log.i("onClick", "User clicked mood advice button");
         Intent intent = new Intent(MoodActivity.this, MoodAdviceActivity.class);
-        intent.putExtra("position", positionOfSelectedDataFromSpinner);
+        Bundle bundle = new Bundle();
+        bundle.putString("mood", selectedMood);
+        intent.putExtra("selectedItem", bundle);
         startActivity(intent);
     }
 }
