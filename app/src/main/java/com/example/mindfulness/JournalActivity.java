@@ -53,7 +53,7 @@ public class JournalActivity extends AppCompatActivity {
         }
 
         public String getItem(int position){
-            return myEntries.get(position);
+            return myEntries.get(position * 4);
         }
 
         public View getView(int position, View convertView, ViewGroup parent){
@@ -93,10 +93,10 @@ public class JournalActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view,int position, long id) {
                 Intent intent = new Intent(JournalActivity.this, EditMessage.class);
                 Bundle bundle = new Bundle();
-                bundle.putString("date",myEntries.get(position));
-                bundle.putString("message1",myEntries.get(position + 1));
-                bundle.putString("message2",myEntries.get(position + 2));
-                bundle.putString("message3",myEntries.get(position + 3));
+                bundle.putString("date",myEntries.get(position * 4));
+                bundle.putString("message1",myEntries.get((position * 4) + 1));
+                bundle.putString("message2",myEntries.get((position*4) + 2));
+                bundle.putString("message3",myEntries.get((position*4) + 3));
                 intent.putExtra("myMessage", bundle);
                 startActivity(intent);
                 Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
@@ -118,6 +118,7 @@ public class JournalActivity extends AppCompatActivity {
             myEntries.add(message1);
             myEntries.add(message2);
             myEntries.add(message3);
+            myCursor.moveToNext();
         }
         myCursor.close();
         db.close();
