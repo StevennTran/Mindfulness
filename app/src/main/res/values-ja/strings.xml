@@ -3,5 +3,10 @@
     <string name="app_name">名前アプリ</string>
     <string name="LoginText">ログインする</string>
     <string name="PasswordText">パスワード</string>
-    <string name="RegisterText">Register</string>
+    <string name="RegisterText">登録</string>
+    <string name="waterIntake">あなたの水の摂取量を追跡します</string>
+    <string name="SleepTracker">健康的な睡眠スケジュールを作成して維持する</string>
+    <string name="TrackMoodState">あなたの気分状態を追跡して記録する</string>
+    <string name="Mediation">瞑想とマインドフルネスを実践する</string>
+    <string name="Journal">自分の日記を書いたり読んだりする</string>
 </resources>
