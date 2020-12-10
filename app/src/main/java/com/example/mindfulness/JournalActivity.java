@@ -132,7 +132,7 @@ public class JournalActivity extends AppCompatActivity {
             myCursor.moveToNext();
         }
         myCursor.close();
-        
+        ((journalAdapter) myListView.getAdapter()).notifyDataSetChanged();
     }
 
     @Override
