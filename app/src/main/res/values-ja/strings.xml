@@ -9,4 +9,22 @@
     <string name="TrackMoodState">あなたの気分状態を追跡して記録する</string>
     <string name="Mediation">瞑想とマインドフルネスを実践する</string>
     <string name="Journal">自分の日記を書いたり読んだりする</string>
+    <string name="question1">感謝しています…」</string>
+    <string name="question2">今日は何が素晴らしいのでしょうか?</string>
+    <string name="question3">どうすれば今日をさらに良くすることができますか？</string>
+    <string name="deleteButton">削除</string>
+    <string name="backButton">バック</string>
+    <string name="blueButton">ポジティブな気分を構築して維持するにはどうすればよいですか？</string>
+    <string name="hintEmail">有効なメール</string>
+    <string name="startWater">0</string>
+    <string name="add">+</string>
+    <string name="subtract">-</string>
+    <string name="writeText">書く</string>
+    <string name="register">未登録？</string>
+    <string name="signupText">サインアップ</string>
+    <string name="test">テスト</string>
+    <string name="sleep1">あなたが寝た時間：</string>
+    <string name="sleep2">目が覚めた時間：</string>
+    <string name="setText">クリックして時間を設定</string>
+    <string name="hours_of_sleep">睡眠時間：</string>
 </resources>

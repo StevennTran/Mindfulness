@@ -8,15 +8,22 @@
     <string name="TrackMoodState">Track and record your moodstate</string>
     <string name="Mediation">Practice meditation and mindfulness</string>
     <string name="Journal">Write and read through your own journal</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_toolbar_content">toolbar_content</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="question1">I am grateful for…</string>
+    <string name="question2">What would make today great?</string>
+    <string name="question3">How could I make today even better?</string>
+    <string name="deleteButton">Delete</string>
+    <string name="backButton">Back</string>
+    <string name="blueButton">How do I build and maintain a positive mood?</string>
+    <string name="hintEmail">Valid Email</string>
+    <string name="startWater">0</string>
+    <string name="add">+</string>
+    <string name="subtract">-</string>
+    <string name="writeText">write</string>
+    <string name="register">Not registered?</string>
+    <string name="signupText">Sign up</string>
+    <string name="test">test</string>
+    <string name="sleep1">Time you went to sleep:</string>
+    <string name="sleep2">Time you woke up:</string>
+    <string name="setText">Click to set time</string>
+    <string name="hours_of_sleep">Hours of sleep:</string>
 </resources>
