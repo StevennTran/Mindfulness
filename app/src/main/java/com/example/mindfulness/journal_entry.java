@@ -115,6 +115,7 @@ public class journal_entry extends Fragment {
                 textA2.setText("");
                 textA3.setText("");
 
+
                 myEntries.add(date);
                 myEntries.add(editTextA1);
                 myEntries.add(editTextA2);

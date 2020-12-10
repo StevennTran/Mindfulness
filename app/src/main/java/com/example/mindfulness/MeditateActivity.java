@@ -37,24 +37,22 @@ public class MeditateActivity extends AppCompatActivity {
 
     protected void onStart(){
         super.onStart();
-
     }
 
 
     protected void onPause() {
         super.onPause();
-        meditateMusic.release();
+        meditateMusic.stop();
 
     }
 
     protected void onStop(){
         super.onStop();
-        meditateMusic.release();
+        meditateMusic.stop();
     }
 
     protected void onDestroy(){
         super.onDestroy();
-        meditateMusic.release();
-
+        meditateMusic.stop();
     }
 }

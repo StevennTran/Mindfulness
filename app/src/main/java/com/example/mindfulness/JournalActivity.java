@@ -121,11 +121,13 @@ public class JournalActivity extends AppCompatActivity {
             myCursor.moveToNext();
         }
         myCursor.close();
-        db.close();
+        //db.close();
     }
 
     protected void onResume(){
+        Log.i("RESUME","CALLING RESUME");
         super.onResume();
+        Log.i("RESUME","CALLING RESUME 2");
 
     }
 

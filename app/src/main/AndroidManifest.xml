@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".EditMessage"></activity>
+        <activity android:name=".toolBar"></activity>
+        <activity android:name=".EditMessage" />
         <activity android:name=".SleepActivity" />
         <activity android:name=".MoodAdviceActivity" />
         <activity android:name=".MeditateActivity" />
@@ -20,7 +21,7 @@
         <activity android:name=".JournalActivity" />
         <activity
             android:name=".RegisterActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".LoginActivity"
