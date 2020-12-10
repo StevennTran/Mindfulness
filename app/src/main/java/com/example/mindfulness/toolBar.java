@@ -42,7 +42,7 @@ public class toolBar extends AppCompatActivity {
         int id = item.getItemId();
         switch (id) {
             case R.id.action_logout:
-
+                android.os.Process.killProcess(android.os.Process.myPid());
                 break;
             case R.id.action_aboutUs:
                 //Start an activity…
