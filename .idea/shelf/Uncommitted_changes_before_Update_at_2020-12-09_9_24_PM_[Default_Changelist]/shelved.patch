@@ -1,0 +1,196 @@
+Index: app/src/main/res/layout/activity_water.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".WaterActivity\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/water_counter\"\r\n        android:layout_width=\"80dp\"\r\n        android:layout_height=\"35dp\"\r\n        android:layout_marginStart=\"170dp\"\r\n        android:layout_marginTop=\"350dp\"\r\n        android:layout_marginEnd=\"170dp\"\r\n        android:layout_marginBottom=\"350dp\"\r\n        android:text=\"0\"\r\n        android:gravity=\"center\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\" />\r\n\r\n    <Button\r\n        android:id=\"@+id/button_waterCountUp\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"10dp\"\r\n        android:layout_marginTop=\"350dp\"\r\n        android:layout_marginEnd=\"65dp\"\r\n        android:layout_marginBottom=\"350dp\"\r\n        android:backgroundTint=\"#03A9F4\"\r\n        android:onClick=\"waterIncrement\"\r\n        android:text=\"+\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toEndOf=\"@+id/water_counter\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        android:background=\"@drawable/roundcorner\"/>\r\n\r\n    <Button\r\n        android:id=\"@+id/button_waterCountDown\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"65dp\"\r\n        android:layout_marginTop=\"350dp\"\r\n        android:layout_marginEnd=\"10dp\"\r\n        android:layout_marginBottom=\"350dp\"\r\n        android:backgroundTint=\"#03A9F4\"\r\n        android:onClick=\"waterDecrement\"\r\n        android:text=\"-\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toStartOf=\"@+id/water_counter\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        android:background=\"@drawable/roundcorner\"/>\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView_glass\"\r\n        android:layout_width=\"190dp\"\r\n        android:layout_height=\"250dp\"\r\n        android:layout_marginStart=\"110dp\"\r\n        android:layout_marginTop=\"60dp\"\r\n        android:layout_marginEnd=\"110dp\"\r\n        android:layout_marginBottom=\"30dp\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/water_counter\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        app:srcCompat=\"@drawable/water_glass\" />\r\n\r\n    <ProgressBar\r\n        android:id=\"@+id/progressBar\"\r\n        style=\"?android:attr/progressBarStyleHorizontal\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"150dp\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_marginEnd=\"150dp\"\r\n        android:layout_marginBottom=\"300dp\"\r\n        android:background=\"#000000\"\r\n        android:backgroundTint=\"#F60202\"\r\n        android:max=\"80\"\r\n        android:progressTint=\"@color/colorPrimary\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/water_counter\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_water.xml	(revision ebce0f675bf854670fd9451ec681c6893cc73d22)
++++ app/src/main/res/layout/activity_water.xml	(date 1607276956933)
+@@ -78,8 +78,6 @@
+         android:layout_marginTop="30dp"
+         android:layout_marginEnd="150dp"
+         android:layout_marginBottom="300dp"
+-        android:background="#000000"
+-        android:backgroundTint="#F60202"
+         android:max="80"
+         android:progressTint="@color/colorPrimary"
+         app:layout_constraintBottom_toBottomOf="parent"
+Index: app/src/main/java/com/example/mindfulness/SleepActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mindfulness;\r\n\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.fragment.app.DialogFragment;\r\n\r\nimport android.annotation.SuppressLint;\r\nimport android.app.Dialog;\r\nimport android.app.TimePickerDialog;\r\nimport android.os.Bundle;\r\nimport android.text.format.DateFormat;\r\nimport android.view.View;\r\nimport android.widget.EditText;\r\nimport android.widget.TextView;\r\nimport android.widget.TimePicker;\r\n\r\nimport java.util.Calendar;\r\n\r\npublic class SleepActivity extends AppCompatActivity {\r\n\r\n    @SuppressLint(\"StaticFieldLeak\")\r\n    static TextView sleepTime;\r\n    @SuppressLint(\"StaticFieldLeak\")\r\n    static TextView wakeTime;\r\n    TextView label_sleepTime;\r\n    TextView label_wakeTime;\r\n    TextView label_hoursOfSleep;\r\n    static int sleepOrWake = -1;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        setContentView(R.layout.activity_sleep);\r\n\r\n        sleepTime = findViewById(R.id.sleepTime);\r\n        wakeTime = findViewById(R.id.wakeTime);\r\n    }\r\n\r\n    public static class TimePickerFragment extends DialogFragment\r\n            implements TimePickerDialog.OnTimeSetListener {\r\n\r\n        @Override\r\n        public Dialog onCreateDialog(Bundle savedInstanceState) {\r\n            // Use the current time as the default values for the picker\r\n            final Calendar c = Calendar.getInstance();\r\n            int hour = c.get(Calendar.HOUR_OF_DAY);\r\n            int minute = c.get(Calendar.MINUTE);\r\n\r\n            return new TimePickerDialog(getActivity(), this, hour, minute,\r\n                    DateFormat.is24HourFormat(getActivity()));\r\n        }\r\n\r\n        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {\r\n            if (sleepOrWake == 0)\r\n            {\r\n                sleepTime.setText(hourOfDay + \":\" + minute);\r\n            }\r\n            else if(sleepOrWake == 1)\r\n            {\r\n                wakeTime.setText(hourOfDay + \":\" + minute);\r\n            }\r\n        }\r\n    }\r\n    public void showTimePickerDialogSleep(View v) {\r\n        DialogFragment newFragment = new TimePickerFragment();\r\n        newFragment.show(getSupportFragmentManager(), \"timePicker\");\r\n        sleepOrWake = 0;\r\n    }\r\n    public void showTimePickerDialogWake(View v) {\r\n        DialogFragment newFragment = new TimePickerFragment();\r\n        newFragment.show(getSupportFragmentManager(), \"timePicker\");\r\n        sleepOrWake = 1;\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/mindfulness/SleepActivity.java	(revision ebce0f675bf854670fd9451ec681c6893cc73d22)
++++ app/src/main/java/com/example/mindfulness/SleepActivity.java	(date 1607567035110)
+@@ -8,14 +8,22 @@
+ import android.app.TimePickerDialog;
+ import android.os.Bundle;
+ import android.text.format.DateFormat;
++import android.util.Log;
+ import android.view.View;
+ import android.widget.EditText;
+ import android.widget.TextView;
++import java.time.Duration;
++
++import java.time.LocalTime;
++import java.util.Date;
++import java.text.SimpleDateFormat;
+ import android.widget.TimePicker;
++import java.time.Duration;
+ 
+ import java.util.Calendar;
+ 
+-public class SleepActivity extends AppCompatActivity {
++public class SleepActivity extends AppCompatActivity
++{
+ 
+     @SuppressLint("StaticFieldLeak")
+     static TextView sleepTime;
+@@ -23,23 +31,34 @@
+     static TextView wakeTime;
+     TextView label_sleepTime;
+     TextView label_wakeTime;
+-    TextView label_hoursOfSleep;
++    static TextView label_hoursOfSleep;
++    static TextView tot;
+     static int sleepOrWake = -1;
++    static int sleepHour;
++    static int sleepMinute;
++    static LocalTime st;
++    static LocalTime wt;
++    static LocalTime tt;
+ 
+     @Override
+-    protected void onCreate(Bundle savedInstanceState) {
++    protected void onCreate(Bundle savedInstanceState)
++    {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_sleep);
+ 
+         sleepTime = findViewById(R.id.sleepTime);
+         wakeTime = findViewById(R.id.wakeTime);
++        label_hoursOfSleep = findViewById(R.id.label_hoursOfSleep);
++        tot = findViewById(R.id.totalHrs);
+     }
+ 
+     public static class TimePickerFragment extends DialogFragment
+-            implements TimePickerDialog.OnTimeSetListener {
++            implements TimePickerDialog.OnTimeSetListener
++    {
+ 
+         @Override
+-        public Dialog onCreateDialog(Bundle savedInstanceState) {
++        public Dialog onCreateDialog(Bundle savedInstanceState)
++        {
+             // Use the current time as the default values for the picker
+             final Calendar c = Calendar.getInstance();
+             int hour = c.get(Calendar.HOUR_OF_DAY);
+@@ -49,14 +68,39 @@
+                     DateFormat.is24HourFormat(getActivity()));
+         }
+ 
+-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
++        public void onTimeSet(TimePicker view, int hourOfDay, int minute)
++        {
+             if (sleepOrWake == 0)
+             {
+-                sleepTime.setText(hourOfDay + ":" + minute);
++                String sleepyTime = "";
++                if(hourOfDay>=0 && hourOfDay<10)
++                {
++                    sleepyTime = "0" + Integer.toString(hourOfDay) + ":" + Integer.toString(minute);
++                }
++                else
++                {
++                    sleepyTime = Integer.toString(hourOfDay) + ":" + Integer.toString(minute);
++                }
++                st = LocalTime.parse(sleepyTime);
++                sleepTime.setText(sleepyTime);
++                sleepHour = hourOfDay;
++                sleepMinute = minute;
+             }
+             else if(sleepOrWake == 1)
+             {
+-                wakeTime.setText(hourOfDay + ":" + minute);
++                String wakeyTime = "";
++                if(hourOfDay>=0 && hourOfDay<10)
++                {
++                    wakeyTime = "0" + Integer.toString(hourOfDay) + ":" + Integer.toString(minute);
++                }
++                else
++                {
++                    wakeyTime = Integer.toString(hourOfDay) + ":" + Integer.toString(minute);
++                }
++                wakeTime.setText(wakeyTime);
++                wt = LocalTime.parse(wakeyTime);
++                tt = wt.minus(Duration.ofHours(st.getHour()));
++                tot.setText(tt.toString());
+             }
+         }
+     }
+Index: app/src/main/res/layout/activity_sleep.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.constraintlayout.widget.ConstraintLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".SleepActivity\">\r\n\r\n    <TextView\r\n        android:id=\"@+id/label_sleepTime\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginStart=\"170dp\"\r\n        android:layout_marginTop=\"200dp\"\r\n        android:layout_marginEnd=\"170dp\"\r\n        android:text=\"Time you went to sleep:\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/sleepTime\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.506\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toTopOf=\"parent\"\r\n        android:gravity=\"center\"/>\r\n\r\n    <TextView\r\n        android:id=\"@+id/label_wakeTime\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:text=\"Time you woke up:\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/wakeTime\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.496\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/sleepTime\"\r\n        android:gravity=\"center\"/>\r\n\r\n    <TextView\r\n        android:id=\"@+id/wakeTime\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"10dp\"\r\n        android:layout_marginBottom=\"10dp\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"time\"\r\n        android:onClick=\"showTimePickerDialogWake\"\r\n        android:text=\"Click to set time\"\r\n        android:background=\"@drawable/roundcorner\"\r\n        android:fontFamily=\"sans-serif-smallcaps\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/label_hoursOfSleep\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.489\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/label_wakeTime\"\r\n        android:gravity=\"center\"/>\r\n\r\n    <TextView\r\n        android:id=\"@+id/label_hoursOfSleep\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"30dp\"\r\n        android:layout_marginBottom=\"470dp\"\r\n        android:text=\"Hours of sleep:\"\r\n        app:layout_constraintBottom_toBottomOf=\"parent\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/wakeTime\"\r\n        android:gravity=\"center\"/>\r\n\r\n    <TextView\r\n        android:id=\"@+id/sleepTime\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginTop=\"10dp\"\r\n        android:layout_marginBottom=\"10dp\"\r\n        android:ems=\"10\"\r\n        android:inputType=\"time\"\r\n        android:onClick=\"showTimePickerDialogSleep\"\r\n        android:text=\"Click to set time\"\r\n        android:background=\"@drawable/roundcorner\"\r\n        android:fontFamily=\"sans-serif-smallcaps\"\r\n        app:layout_constraintBottom_toTopOf=\"@+id/label_wakeTime\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"0.489\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/label_sleepTime\"\r\n        android:gravity=\"center\"/>\r\n\r\n    <ImageView\r\n        android:id=\"@+id/imageView4\"\r\n        android:layout_width=\"300dp\"\r\n        android:layout_height=\"300dp\"\r\n        android:layout_marginStart=\"55dp\"\r\n        android:layout_marginTop=\"20dp\"\r\n        android:layout_marginEnd=\"55dp\"\r\n        app:layout_constraintEnd_toEndOf=\"parent\"\r\n        app:layout_constraintHorizontal_bias=\"1.0\"\r\n        app:layout_constraintStart_toStartOf=\"parent\"\r\n        app:layout_constraintTop_toBottomOf=\"@+id/label_hoursOfSleep\"\r\n        app:srcCompat=\"@drawable/sleepy_face\" />\r\n\r\n</androidx.constraintlayout.widget.ConstraintLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_sleep.xml	(revision ebce0f675bf854670fd9451ec681c6893cc73d22)
++++ app/src/main/res/layout/activity_sleep.xml	(date 1607566285217)
+@@ -93,9 +93,22 @@
+         android:layout_marginTop="20dp"
+         android:layout_marginEnd="55dp"
+         app:layout_constraintEnd_toEndOf="parent"
+-        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintHorizontal_bias="0.0"
+         app:layout_constraintStart_toStartOf="parent"
+-        app:layout_constraintTop_toBottomOf="@+id/label_hoursOfSleep"
++        app:layout_constraintTop_toBottomOf="@+id/totalHrs"
+         app:srcCompat="@drawable/sleepy_face" />
+ 
++    <TextView
++        android:id="@+id/totalHrs"
++        android:layout_width="wrap_content"
++        android:layout_height="wrap_content"
++        android:layout_marginStart="150dp"
++        android:layout_marginTop="10dp"
++        android:layout_marginEnd="150dp"
++        android:layout_marginBottom="43dp"
++        app:layout_constraintBottom_toTopOf="@+id/imageView4"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/label_hoursOfSleep" />
++
+ </androidx.constraintlayout.widget.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/java/com/example/mindfulness/DatabaseHelper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.mindfulness;\r\n\r\nimport android.content.Context;\r\nimport android.database.sqlite.SQLiteDatabase;\r\nimport android.database.sqlite.SQLiteOpenHelper;\r\nimport android.util.Log;\r\n\r\n\r\npublic class DatabaseHelper extends SQLiteOpenHelper {\r\n\r\n\r\n    public static final String DATABASE_NAME = \"MindfulDatabase\";\r\n    public static final int VERSION_NUM = 14;\r\n    public static String USER_ID = \"UserID\";\r\n    public static String TABLE_NAME = \"Accounts\";\r\n    public static String USERNAME = \"UserName\";\r\n    public static String  PASSWORD = \"Password\";\r\n    public static String JOURNAL_TABLE_NAME = \"Journal\";\r\n    public static String DATE = \"Date\";\r\n    public static String TEXTONE = \"TextOne\";\r\n    public static String TEXTTWO = \"TextTwo\";\r\n    public static String TEXTTHREE = \"TextThree\";\r\n\r\n    final private String ACTIVITY_NAME = \"DatabaseHelper\";\r\n\r\n\r\n    //private static final String DATABASE_CREATE = \"create table \" + TABLE_NAME + \"(\" + USER_ID + \" integer primary key autoincrement, \" + USERNAME + \" text not null);\";\r\n\r\n    public static final String DATABASE_CREATE = \"create table \" + TABLE_NAME + \"(\" + USER_ID + \" integer primary key autoincrement, \" + USERNAME + \" text not null, \" + PASSWORD + \" text not null);\";\r\n    public static final String DATABASE_CREATE_JOURNAL = \"create table \" + JOURNAL_TABLE_NAME + \"(\" + USER_ID + \" integer, \" + DATE + \" text not null, \" + TEXTONE + \" text not null, \" + TEXTTWO + \" text not null,\" + TEXTTHREE + \" text not null);\";\r\n\r\n\r\n    public DatabaseHelper(Context ctx) {\r\n        super(ctx, DATABASE_NAME, null, VERSION_NUM);\r\n    }\r\n\r\n    @Override\r\n    public void onCreate(SQLiteDatabase database) {\r\n        Log.i(ACTIVITY_NAME, \"Calling onCreate\");\r\n        database.execSQL(DATABASE_CREATE);\r\n        database.execSQL(DATABASE_CREATE_JOURNAL);\r\n    }\r\n\r\n    @Override\r\n    public void onUpgrade(SQLiteDatabase db,int oldVersion,int newVersion) {\r\n        Log.i(ACTIVITY_NAME, \"Calling onUpgrade, oldVersion=\" + oldVersion + \"newVersion=\" + newVersion);\r\n        db.execSQL(\"DROP TABLE IF EXISTS \" + TABLE_NAME);\r\n        db.execSQL(\"DROP TABLE IF EXISTS \" + JOURNAL_TABLE_NAME);\r\n        onCreate(db);\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/mindfulness/DatabaseHelper.java	(revision ebce0f675bf854670fd9451ec681c6893cc73d22)
++++ app/src/main/java/com/example/mindfulness/DatabaseHelper.java	(date 1607563098016)
+@@ -8,9 +8,8 @@
+ 
+ public class DatabaseHelper extends SQLiteOpenHelper {
+ 
+-
+     public static final String DATABASE_NAME = "MindfulDatabase";
+-    public static final int VERSION_NUM = 14;
++    public static final int VERSION_NUM = 16;
+     public static String USER_ID = "UserID";
+     public static String TABLE_NAME = "Accounts";
+     public static String USERNAME = "UserName";
+@@ -23,7 +22,6 @@
+ 
+     final private String ACTIVITY_NAME = "DatabaseHelper";
+ 
+-
+     //private static final String DATABASE_CREATE = "create table " + TABLE_NAME + "(" + USER_ID + " integer primary key autoincrement, " + USERNAME + " text not null);";
+ 
+     public static final String DATABASE_CREATE = "create table " + TABLE_NAME + "(" + USER_ID + " integer primary key autoincrement, " + USERNAME + " text not null, " + PASSWORD + " text not null);";

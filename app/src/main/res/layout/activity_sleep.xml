@@ -95,10 +95,23 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="55dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_hoursOfSleep"
+        app:layout_constraintTop_toBottomOf="@+id/totalHrs"
         app:srcCompat="@drawable/sleepy_face"
         tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/totalHrs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="150dp"
+        android:layout_marginBottom="43dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/label_hoursOfSleep" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
