@@ -42,6 +42,7 @@ public class JournalActivity extends AppCompatActivity {
     int userID;
     final String LOGINID = "LOGINID";
     public Button submitButton;
+    final DatabaseHelper dbHelper = new DatabaseHelper(this);
 
     public class journalAdapter extends ArrayAdapter<String> {
 
@@ -67,6 +68,8 @@ public class JournalActivity extends AppCompatActivity {
         }
     }
 
+//    journalAdapter myAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,10 +77,12 @@ public class JournalActivity extends AppCompatActivity {
 
         FragmentManager fragmentMan = getSupportFragmentManager();
         FragmentTransaction fragTrans = fragmentMan.beginTransaction();
-        final journalAdapter myAdapter = new journalAdapter(this);
+
         Bundle bundle = getIntent().getExtras().getBundle(LOGINID);
         userID = bundle.getInt("userID");
         Log.i("JournalActivity",Integer.toString(userID));
+
+        final journalAdapter myAdapter = new journalAdapter(this);
 
         myListView = findViewById(R.id.listView);
         myListView.setAdapter (myAdapter);
@@ -97,15 +102,21 @@ public class JournalActivity extends AppCompatActivity {
                 bundle.putString("message1",myEntries.get((position * 4) + 1));
                 bundle.putString("message2",myEntries.get((position*4) + 2));
                 bundle.putString("message3",myEntries.get((position*4) + 3));
+                bundle.putInt("position", position);
                 intent.putExtra("myMessage", bundle);
-                startActivity(intent);
+                startActivityForResult(intent, 5);
                 Log.i("HelloListView", "You clicked Item: " + id + " at position:" + position);
+                Log.i("Testing OnClick", Long.toString(id));
             }
         });
-        DatabaseHelper dbHelper = new DatabaseHelper(this); //View is parent
+            updateListView();
+    }
+
+    public void updateListView() {
+        //View is parent
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         //ContentValues values = new ContentValues();
-        String query = "SELECT * FROM Journal";
+        String query = "SELECT * FROM Journal WHERE UserID = " + Integer.toString(userID);
         Cursor myCursor = db.rawQuery(query,null);
 
         myCursor.moveToFirst();
@@ -121,34 +132,32 @@ public class JournalActivity extends AppCompatActivity {
             myCursor.moveToNext();
         }
         myCursor.close();
-        //db.close();
+        
     }
 
-    protected void onResume(){
-        Log.i("RESUME","CALLING RESUME");
-        super.onResume();
-        Log.i("RESUME","CALLING RESUME 2");
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==10)
+        {
+            final journalAdapter myAdapter = new journalAdapter(this);
+            int position = data.getIntExtra("position", 0);
+            String text1 = data.getStringExtra("text1");
+            String text2 = data.getStringExtra("text2");
+            String text3 = data.getStringExtra("text3");
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+            Log.i("temp", Integer.toString(position + 1));
 
+//            String query = "SELECT * FROM Journal WHERE UserID = " + Integer.toString(userID);
+//            Cursor myCursor = db.rawQuery(query,null);
+//
+//            myCursor.moveToFirst();
+            db.delete("Journal", "TextOne=? and TextTwo=? and TextThree=?",new String[] {text1, text2, text3});
+            myEntries.clear();
+            updateListView();
+            Log.i("ONACTIVITY", "OnActivity Working!");
+        }
     }
 
-    protected void onStart(){
-        super.onStart();
-
-    }
-
-
-    protected void onPause() {
-        super.onPause();
-
-    }
-
-    protected void onStop(){
-        super.onStop();
-
-    }
-
-    protected void onDestroy(){
-        super.onDestroy();
-
-    }
 }
